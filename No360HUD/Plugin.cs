@@ -23,11 +23,6 @@ namespace No360HUD
         internal static string Name => "No360HUD";
 
         [Init]
-        /// <summary>
-        /// Called when the plugin is first loaded by IPA (either when the game starts or when the plugin is enabled if it starts disabled).
-        /// [Init] methods that use a Constructor or called before regular methods like InitWithConfig.
-        /// Only use [Init] with one Constructor.
-        /// </summary>
         public void Init(IPALogger logger)
         {
             instance = this;
