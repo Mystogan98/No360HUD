@@ -1,0 +1,17 @@
+﻿{
+  "$schema": "https://raw.githubusercontent.com/beat-saber-modding-group/BSIPA-MetadataFileSchema/master/Schema.json",
+  "id": "No360HUD",
+  "name": "No360HUD",
+  "author": "",
+  "version": "0.1.0",
+  "description": "Disables 360 HUD for maps that has no valid rotationEvents",
+  "gameVersion": "1.10.0",
+  "dependsOn": {
+
+  },
+  "features": [],
+  "links": {
+    "project-source": "https://github.com/exampleman/demo-plugin/",
+    "donate": "https://ko-fi.com/rugtveit"
+  }
+}
