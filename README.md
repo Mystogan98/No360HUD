@@ -8,3 +8,5 @@ and looks after rotation events (Event 14 and 15).
 If it finds an event then it checks if it's a valid one.
 If there are no valid events found then it sets spawnRotationEventsCount to be 0
 so the game doesn't enable the 360 HUD elements!
+
+Made by Rugtveit, updated by Mystogan.

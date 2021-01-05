@@ -12,28 +12,25 @@ namespace No360HUD.HarmonyPatches
 {
 	class GameCoreSetupInstallBindings
 	{
-
-
-
-		[HarmonyPatch(typeof(GameplayCoreSceneSetup))]
-		[HarmonyPatch("InstallBindings", MethodType.Normal)]
+		// GameplayCoreSceneSetup
+		[HarmonyPatch(typeof(GameplayCoreInstaller))]
+		[HarmonyPatch(nameof(GameplayCoreInstaller.InstallBindings))]
 		class GameplayCoreSceneSetupInstallBindings
 		{
-
-			static bool Prefix(ref GameplayCoreSceneSetup __instance)
+			static bool Prefix(ref GameCoreSceneSetup __instance, ref GameplayCoreSceneSetupData ____sceneSetupData)
 			{
-				IPALogger log = Plugin._logger;
-				log.Debug("Started patch!");
-				bool is360 = false;
-				IDifficultyBeatmap difficultyBeatmap = IPAUtils.GetField<GameplayCoreSceneSetupData, GameplayCoreSceneSetup>(__instance, "_sceneSetupData").difficultyBeatmap;
-				BeatmapEventData[] beatmapEventData = difficultyBeatmap.beatmapData.beatmapEventData;
+				IDifficultyBeatmap difficultyBeatmap = ____sceneSetupData.difficultyBeatmap;
+				IReadOnlyList<BeatmapEventData> beatmapEventData = difficultyBeatmap.beatmapData.beatmapEventsData;
 				SpawnRotationProcessor rotProcessor = new SpawnRotationProcessor();
+				bool is360 = false;
+
 				foreach (BeatmapEventData beatmapEvent in beatmapEventData)
 				{
-					if (!(beatmapEvent.type == BeatmapEventType.Event14 || beatmapEvent.type == BeatmapEventType.Event15)) continue;
+					if (beatmapEvent.type != BeatmapEventType.Event14 && beatmapEvent.type != BeatmapEventType.Event15) 
+						continue;
+
 					if (rotProcessor.RotationForEventValue(beatmapEvent.value) != 0)
 					{
-						log.Debug("360 is true!");
 						is360 = true;
 						break;
 					}
