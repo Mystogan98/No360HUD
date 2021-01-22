@@ -3,9 +3,9 @@
   "id": "No360HUD",
   "name": "No360HUD",
   "author": "Mystogan",
-  "version": "1.13.0",
+  "version": "1.13.2",
   "description": "Disables 360 HUD for maps that have no valid rotationEvents",
-  "gameVersion": "1.13.0",
+  "gameVersion": "1.13.2",
   "dependsOn": {
     "BSIPA": "^4.1.3"
   },
